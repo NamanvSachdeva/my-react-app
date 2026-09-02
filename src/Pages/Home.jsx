@@ -2,10 +2,10 @@ import NavBar from "../Components/Layout/Navbar";
 import StatsCard1 from "../Components/HomeComponents/SchoolFacts/StatsCard1";
 import Sidebar from "../Components/Layout/Sidebar";
 import Complaints from "../Components/HomeComponents/SchoolFacts/InfoCards";
-import TopStudents from "../Components/HomeComponents/SchoolFacts/TopStdnCard";
-import Highlightscard from "../Components/HomeComponents/SchoolFacts/Higlights";
+import TopStudents from "../Components/HomeComponents/SchoolFacts/TopStudentCard";
+import Highlightscard from "../Components/HomeComponents/SchoolFacts/Highlights";
 import Notices from "../Components/HomeComponents/SchoolFacts/Notice";
-import AttendanceChart from "../Components/HomeComponents/Analytics/AttendenceChart";
+import AttendanceChart from "../Components/HomeComponents/Analytics/AttendanceChart";
 import AdmissionsChart from "../Components/HomeComponents/Analytics/AdmissionsChart";
 
 

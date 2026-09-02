@@ -1,5 +1,5 @@
 import AdmissionsChart from "../Components/HomeComponents/Analytics/AdmissionsChart";
-import AttendanceChart from "../Components/HomeComponents/Analytics/AttendenceChart";
+import AttendanceChart from "../Components/HomeComponents/Analytics/AttendanceChart";
 import NavBar from "../Components/Layout/Navbar";
 import Sidebar from "../Components/Layout/Sidebar";
 

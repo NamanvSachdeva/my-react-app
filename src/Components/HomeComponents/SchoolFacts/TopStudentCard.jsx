@@ -1,4 +1,4 @@
-import { topPerformers } from "../../../Data/Topperfromers";
+import { topPerformers } from "../../../Data/TopPerformers";
 
 export default function TopStudents() {
   return (

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ListStudentHead from "./HeaderStudentList";
-import StudentTable from "./StudentRow";
-import FilterShowRow from "./FilterRow";
+import StudentTable from "./Studenttable";
+import FilterShowRow from "./Filterdisplay";
 
 export default function StudentList() {
   const [search, setSearch] = useState("");

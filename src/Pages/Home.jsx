@@ -1,6 +1,6 @@
 import NavBar from "../Components/Layout/Navbar";
 import StatsCard1 from "../Components/HomeComponents/SchoolFacts/StatsCard1";
-import Sidebar from "../Components/Layout/Sidebar";
+import Sidebar from "../Components/Layout/Sidenav";
 import Complaints from "../Components/HomeComponents/SchoolFacts/InfoCards";
 import TopStudents from "../Components/HomeComponents/SchoolFacts/TopStudentCard";
 import HighlightsCard from "../Components/HomeComponents/SchoolFacts/Highlights";
@@ -11,7 +11,7 @@ import AdmissionsChart from "../Components/HomeComponents/Analytics/AdmissionsCh
 export default function HomeDash() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Fixed Sidebar */}
+      {/* Fixed  */}
       <Sidebar />
 
       {/* Main Application Area */}

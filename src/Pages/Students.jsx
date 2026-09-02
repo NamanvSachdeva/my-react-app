@@ -1,6 +1,6 @@
 import AdmissionsChart from "../Components/HomeComponents/Analytics/AdmissionsChart";
 import NavBar from "../Components/Layout/Navbar";
-import Sidebar from "../Components/Layout/Sidebar";
+import Sidebar from "../Components/Layout/Sidenav";
 import AttendanceChart from "../Components/HomeComponents/Analytics/AttendanceChart";
 import StudentStats from "../Components/HomeComponents/SchoolFacts/StudentFacts";
 import StudentList from "../Components/StudentComponents/StudentList";

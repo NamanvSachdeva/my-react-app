@@ -13,7 +13,7 @@ export default function App() {
           path="/"
           element={<HomeDash />}
         />
-
+        
         <Route
           path="/students"
           element={<Students />}

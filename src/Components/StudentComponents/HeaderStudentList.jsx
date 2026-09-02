@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   Search,
   SlidersHorizontal,
@@ -13,6 +15,7 @@ export default function StudentListHeader({
   setFilters,
 }) {
   const [showFilters, setShowFilters] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <header className="relative flex flex-col gap-4 border-b border-gray-100 p-4 sm:p-5 lg:flex-row lg:items-center lg:justify-between">
@@ -207,6 +210,7 @@ export default function StudentListHeader({
         {/* Add Student */}
         <button
           type="button"
+          onClick={()=> {navigate("/Studentform")}}
           className="flex items-center justify-center gap-2 rounded-xl bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600"
         >
           <Plus size={18} />

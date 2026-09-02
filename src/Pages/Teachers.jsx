@@ -1,3 +1,6 @@
+import NavBar from "../Components/Layout/Navbar";
+import Sidebar from "../Components/Layout/Sidebar";
+
 export default function Teachers() {
   return (
     <div className="min-h-screen bg-white">
@@ -9,6 +12,7 @@ export default function Teachers() {
             <h1>Teachers</h1>
           </div>
         </main>
-        </section>
-    </div>  );
+      </section>
+    </div>
+  );
 }

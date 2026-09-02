@@ -1,6 +1,6 @@
 import NavBar from "../Components/Layout/Navbar";
 import StatsCard1 from "../Components/HomeComponents/SchoolFacts/StatsCard1";
-import Sidebar from "../Components/Layout/SideBar";
+import Sidebar from "../Components/Layout/Sidebar";
 import Complaints from "../Components/HomeComponents/SchoolFacts/InfoCards";
 import TopStudents from "../Components/HomeComponents/SchoolFacts/TopStdnCard";
 import Highlightscard from "../Components/HomeComponents/SchoolFacts/Higlights";

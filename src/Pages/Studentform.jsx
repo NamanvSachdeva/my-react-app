@@ -1,3 +1,4 @@
+import PersonalForm from "../Components/Form/personal";
 import StudentFormText from "../Components/Form/studentformtext";
 
 
@@ -24,8 +25,8 @@ export default function StudentForm() {
             <p className="text-md text-black font-medium mt-1">
               Fill in the required information.
             </p>
+              <PersonalForm />
 
-            {/* Your form will come here */}
 
           </div>
 

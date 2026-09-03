@@ -19,7 +19,7 @@ export default function StudentForm() {
           <div className="bg-orange-500 rounded-2xl p-6 shadow-sm">
             
             <h2 className="text-2xl font-bold  text-white">
-              Student Details
+              Personal Details
             </h2>
 
             <p className="text-md text-black font-medium mt-1">

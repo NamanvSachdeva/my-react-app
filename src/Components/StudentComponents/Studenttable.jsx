@@ -4,48 +4,51 @@ import {
   MoreHorizontal,
 } from "lucide-react";
 
-import { students } from "../../Data/Student";
+import { studentsData } from "../../Data/Student";
 
-export default function StudentTable({ search, filters}) {
+export default function StudentTable({ search, filters }) {
 
-  const normalizedSearch  = search.trim().toLowerCase();
+  const normalizedSearch = search.trim().toLowerCase();
 
-  // Filter students according to search text
-  const filteredStudents = students.filter((student) => {
-    const matchesName= student.name
+  const filteredStudents = studentsData.filter((student) => {
+
+    const matchesName = student.personalInfo.name
       .toLowerCase()
       .includes(normalizedSearch);
 
-    const matchesAdmissionNumber = String(student.admissionNumber)
-    .toLowerCase()
-    .includes(normalizedSearch);
-    // here !filters.className is used as to handle the 
+    const matchesAdmissionNumber = String(
+      student.currentClass.admissionNumber
+    )
+      .toLowerCase()
+      .includes(normalizedSearch);
 
-    const matchesClass = !filters.className || String(student.className) === String(filters.className);
+    const matchesClass =
+      !filters.className ||
+      String(student.currentClass.className) === String(filters.className);
 
-    const matchesRollNumber = !filters.rollNumber || String(student.rollNumber) === String(filters.rollNumber);
+    const matchesRollNumber =
+      !filters.rollNumber ||
+      String(student.currentClass.rollNumber) === String(filters.rollNumber);
 
-    const matchesSection = !filters.section || String(student.section) === String(filters.section); 
+    const matchesSection =
+      !filters.section ||
+      String(student.currentClass.section) === String(filters.section);
 
-
-  return (
-    (matchesName || matchesAdmissionNumber) &&
-    matchesClass &&
-    matchesSection &&
-    matchesRollNumber
-  );
-}); 
-
+    return (
+      (matchesName || matchesAdmissionNumber) &&
+      matchesClass &&
+      matchesSection &&
+      matchesRollNumber
+    );
+  });
 
   return (
     <div className="w-full overflow-hidden">
 
-      {/* Horizontal scrolling on small screens */}
       <div className="w-full overflow-x-auto">
 
         <table className="w-full min-w-[900px] border-collapse">
 
-          {/* ================= TABLE HEADER ================= */}
           <thead className="border-b border-orange-200 bg-orange-200/50">
 
             <tr>
@@ -86,155 +89,177 @@ export default function StudentTable({ search, filters}) {
 
           </thead>
 
-
-          {/* ================= TABLE BODY ================= */}
           <tbody className="divide-y divide-gray-100 bg-white">
 
             {filteredStudents.length > 0 ? (
 
-              filteredStudents.map((student) => (
+              filteredStudents
+                .slice(0, 10)
+                .map((student) => {
 
-                <tr
-                  key={student.id}
-                  className="group transition-colors duration-150 hover:bg-orange-50/40"
-                >
+                  const name = student.personalInfo.name;
+                  const admissionNumber =
+                    student.currentClass.admissionNumber;
 
-                  {/* Admission Number */}
-                  <td className="whitespace-nowrap px-5 py-4">
-                    <span className="text-sm font-medium text-gray-700">
-                      {student.admissionNumber}
-                    </span>
-                  </td>
+                  return (
+                    <tr
+                      key={admissionNumber}
+                      className="group transition-colors duration-150 hover:bg-orange-50/40"
+                    >
 
+                      {/* Admission Number */}
 
-                  {/* Student */}
-                  <td className="px-5 py-4">
+                      <td className="whitespace-nowrap px-5 py-4">
 
-                    <div className="flex items-center gap-3">
+                        <span className="text-sm font-medium text-gray-700">
+                          {admissionNumber}
+                        </span>
 
-                      {/* Avatar */}
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange-100 text-sm font-semibold text-orange-600">
-                        {student.name.charAt(0)}
-                      </div>
-
-
-                      {/* Name + ID */}
-                      <div className="min-w-0">
-
-                        <p className="truncate text-sm font-semibold text-gray-800">
-                          {student.name}
-                        </p>
-
-                        <p className="text-xs text-gray-400">
-                          ID #{student.id}
-                        </p>
-
-                      </div>
-
-                    </div>
-
-                  </td>
+                      </td>
 
 
-                  {/* Father */}
-                  <td className="whitespace-nowrap px-5 py-4">
-                    <span className="text-sm text-gray-600">
-                      {student.fatherName}
-                    </span>
-                  </td>
+                      {/* Student */}
+
+                      <td className="px-5 py-4">
+
+                        <div className="flex items-center gap-3">
+
+                          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange-100 text-sm font-semibold text-orange-600">
+                            {name.charAt(0)}
+                          </div>
+
+                          <div className="min-w-0">
+
+                            <p className="truncate text-sm font-semibold text-gray-800">
+                              {name}
+                            </p>
+
+                            <p className="text-xs text-gray-400">
+                              ID #{admissionNumber}
+                            </p>
+
+                          </div>
+
+                        </div>
+
+                      </td>
 
 
-                  {/* Phone */}
-                  <td className="whitespace-nowrap px-5 py-4">
-                    <span className="text-sm text-gray-600">
-                      {student.fatherPhone}
-                    </span>
-                  </td>
+                      {/* Father */}
+
+                      <td className="whitespace-nowrap px-5 py-4">
+
+                        <span className="text-sm text-gray-600">
+                          {student.parentsInfo.fatherName}
+                        </span>
+
+                      </td>
 
 
-                  {/* Class */}
-                  <td className="whitespace-nowrap px-5 py-4">
+                      {/* Phone */}
 
-                    <span className="inline-flex rounded-lg bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-600">
-                      Class {student.className}
-                    </span>
+                      <td className="whitespace-nowrap px-5 py-4">
 
-                  </td>
+                        <span className="text-sm text-gray-600">
+                          {student.parentsInfo.primaryPhone}
+                        </span>
 
-
-                  {/* Section */}
-                  <td className="whitespace-nowrap px-5 py-4">
-                    <span className="text-sm font-medium text-gray-600">
-                      {student.section}
-                    </span>
-                  </td>
+                      </td>
 
 
-                  {/* Roll Number */}
-                  <td className="whitespace-nowrap px-5 py-4">
-                    <span className="text-sm font-medium text-gray-700">
-                      {student.rollNumber}
-                    </span>
-                  </td>
+                      {/* Class */}
+
+                      <td className="whitespace-nowrap px-5 py-4">
+
+                        <span className="inline-flex rounded-lg bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-600">
+                          Class {student.currentClass.className}
+                        </span>
+
+                      </td>
 
 
-                  {/* Actions */}
-                  <td className="whitespace-nowrap px-5 py-4">
+                      {/* Section */}
 
-                    <div className="flex items-center justify-end gap-1">
+                      <td className="whitespace-nowrap px-5 py-4">
 
-                      {/* View */}
-                      <button
-                        type="button"
-                        aria-label={`View details of ${student.name}`}
-                        className="rounded-lg p-2 text-gray-400 transition hover:bg-orange-100 hover:text-orange-600"
-                      >
-                        <Eye size={17} />
-                      </button>
+                        <span className="text-sm font-medium text-gray-600">
+                          {student.currentClass.section}
+                        </span>
+
+                      </td>
 
 
-                      {/* More */}
-                      <button
-                        type="button"
-                        aria-label={`More actions for ${student.name}`}
-                        className="rounded-lg p-2 text-gray-400 transition hover:bg-gray-100 hover:text-gray-700"
-                      >
-                        <MoreHorizontal size={18} />
-                      </button>
+                      {/* Roll Number */}
 
-                    </div>
+                      <td className="whitespace-nowrap px-5 py-4">
 
-                  </td>
+                        <span className="text-sm font-medium text-gray-700">
+                          {student.currentClass.rollNumber}
+                        </span>
 
-                </tr>
+                      </td>
 
-              )).slice(0,10)
+
+                      {/* Actions */}
+
+                      <td className="whitespace-nowrap px-5 py-4">
+
+                        <div className="flex items-center justify-end gap-1">
+
+                          <button
+                            type="button"
+                            aria-label={`View details of ${name}`}
+                            className="rounded-lg p-2 text-gray-400 transition hover:bg-orange-100 hover:text-orange-600"
+                          >
+                            <Eye size={17} />
+                          </button>
+
+                          <button
+                            type="button"
+                            aria-label={`More actions for ${name}`}
+                            className="rounded-lg p-2 text-gray-400 transition hover:bg-gray-100 hover:text-gray-700"
+                          >
+                            <MoreHorizontal size={18} />
+                          </button>
+
+                        </div>
+
+                      </td>
+
+                    </tr>
+                  );
+                })
 
             ) : (
 
-              /* ================= EMPTY STATE ================= */
               <tr>
-                  <td colSpan={8} className="px-5 py-16">
-                    <div className="flex flex-col items-center justify-center text-center">
 
-                      <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-orange-50">
-                        <Search
-                          size={22}
-                          className="text-orange-500"
-                        />
-                      </div>
+                <td colSpan={8} className="px-5 py-16">
 
-                      <h3 className="text-sm font-semibold text-gray-800">
-                        No students found
-                      </h3>
+                  <div className="flex flex-col items-center justify-center text-center">
 
-                      <p className="mt-1 max-w-sm text-xs text-gray-400">
-                        We couldn't find any student matching "{search}".
-                        Try searching with a different name.
-                      </p>
+                    <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-orange-50">
+
+                      <Search
+                        size={22}
+                        className="text-orange-500"
+                      />
 
                     </div>
-                  </td>
+
+                    <h3 className="text-sm font-semibold text-gray-800">
+                      No students found
+                    </h3>
+
+                    <p className="mt-1 max-w-sm text-xs text-gray-400">
+                      We couldn't find any student matching "{search}".
+                      Try searching with a different name.
+                    </p>
+
+                  </div>
+
+                </td>
+
               </tr>
 
             )}
